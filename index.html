@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- Meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Um site para busca de informações de endereço por CEP">
+    <meta name="author" content="Luis Guilherme Oliveira de Lima">
+
+    <!-- Título da página -->
+    <title>Buscador de CEP | Encontre endereços por CEP</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./src/styles/style.css">
+    <link rel="stylesheet" href="./src/styles/responsive.css">
+
+</head>
+
+<body>
+    <main class="container">
+        <!-- Acessibilidade -->
+        <h1 class="sr-only">Buscador de CEP</h1>
+
+        <!-- Busca de CEP -->
+        <section class="busca-cep" aria-labelledby="titulo-busca">
+            <h2 id="titulo-busca" class="titulo-busca">Busque qualquer localização pelo CEP</h2>
+
+            <!-- Formulário de busca -->
+            <form class="formulario-busca" id="formBuscaCEP">
+                <div class="campo-busca">
+                    <label for="cep" class="sr-only">Digite o CEP</label>
+                    <input type="text" id="cep" name="cep" placeholder="Digite seu CEP aqui" maxlength="9"
+                        pattern="\d{5}-?\d{3}" title="Digite um CEP válido no formato 00000-000 ou 00000000" required>
+                </div>
+
+                <!-- Botão de busca -->
+                <button type="submit" class="botao botao-buscar">
+                    <span class="icone-busca" aria-hidden="true">🔍</span>
+                    Buscar
+                </button>
+            </form>
+        </section>
+
+        <!-- Resultados da busca -->
+        <section class="resultado" id="resultadoCEP" aria-live="polite" hidden>
+            <h2 class="sr-only">Resultado da busca</h2>
+            <dl class="lista-cep">
+                <div class="item-cep">
+                    <dt>Logradouro:</dt>
+                    <dd class="logradouro">-</dd>
+                </div>
+                <div class="item-cep">
+                    <dt>Número:</dt>
+                    <dd class="numero">-</dd>
+                </div>
+                <div class="item-cep">
+                    <dt>Bairro/Distrito:</dt>
+                    <dd class="bairro">-</dd>
+                </div>
+                <div class="item-cep">
+                    <dt>UF:</dt>
+                    <dd class="uf">-</dd>
+                </div>
+                <div class="item-cep">
+                    <dt>Município:</dt>
+                    <dd class="municipio">-</dd>
+                </div>
+                <div class="item-cep">
+                    <dt>CEP:</dt>
+                    <dd class="cep">-</dd>
+                </div>
+            </dl>
+        </section>
+
+        <!-- Botão do Maps -->
+        <button class="botao botao-maps" id="botaoMaps" disabled>
+            <span class="icone-maps" aria-hidden="true">📍</span>
+            Localizar no Maps
+        </button>
+    </main>
+
+    <!-- JS -->
+    <script src="./src/assets/js/script.js"></script>
+</body>
+
+</html>

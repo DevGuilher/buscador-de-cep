@@ -1,0 +1,10 @@
+/* Responsividade: telas menores */
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+    }
+
+    .lista-cep {
+        grid-template-columns: 1fr;
+    }
+}
