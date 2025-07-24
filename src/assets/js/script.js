@@ -30,26 +30,21 @@ formBuscaCEP.addEventListener('submit', function (e) {
 });
 
 // Função para buscar o CEP na API ViaCEP
-function buscarCEP(cep) {
-    fetch(`https://viacep.com.br/ws/${cep}/json/`)
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('CEP não encontrado');
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data.erro) {
-                throw new Error('CEP não encontrado');
-            }
-            exibirResultado(data);
-            botaoMaps.disabled = false;
-        })
-        .catch(error => {
-            console.error('Erro ao buscar CEP:', error);
-            alert('CEP não encontrado. Por favor, verifique o número digitado.');
-            limparResultados();
-        });
+async function buscarCEP(cep) {
+    try {
+        const res = await fetch(`https://viacep.com.br/ws/${cep}/json/`);
+        const data = await res.json();
+
+        if (data.erro) {
+            throw new Error('CEP não encontrado!');
+        }
+        exibirResultado(data);
+        botaoMaps.disabled = false;
+    }
+
+    catch (error) {
+        console.error('Erro ao buscar CEP:', error);
+    }
 }
 
 // Exibe os resultados na tela
